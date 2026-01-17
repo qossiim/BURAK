@@ -26,15 +26,36 @@
 // 0 positive hisoblanmaydi, shuning uchun olinmaydi
 // Agar musbat son bo‘lmasa, bo‘sh string "" qaytadi
 
-// H2-qoshimcha
-function getPositive(arr: number[]): string {
-  let result: string = "";
+// // H2-qoshimcha
+// function getPositive(arr: number[]): string {
+//   let result: string = "";
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > 0) {
-      result += arr[i];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] > 0) {
+//       result += arr[i];
+//     }
+//   }
+
+//   return result;
+// }
+
+// I-taks
+function majorityElement(arr: number[]): number {
+  const count: Record<number, number> = {};
+
+  let maxNum: number = arr[0];
+  let maxCount: number = 0;
+
+  for (const num of arr) {
+    count[num] = (count[num] || 0) + 1;
+
+    if (count[num] > maxCount) {
+      maxCount = count[num];
+      maxNum = num;
     }
   }
 
-  return result;
+  return maxNum;
 }
+
+console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
