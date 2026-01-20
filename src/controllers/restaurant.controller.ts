@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { T } from "../libs/types/common";
-import MemberService from "../models/Member.service";
 
-const restauratnController: T = {};
-restauratnController.goHome = (req: Request, res: Response) => {
+const restaurantController: T = {};
+
+restaurantController.goHome = (req: Request, res: Response) => {
   try {
     res.send("Home Page");
   } catch (err) {
@@ -11,7 +11,7 @@ restauratnController.goHome = (req: Request, res: Response) => {
   }
 };
 
-restauratnController.getLogin = (req: Request, res: Response) => {
+restaurantController.getLogin = (req: Request, res: Response) => {
   try {
     res.send("Login Page");
   } catch (err) {
@@ -19,7 +19,7 @@ restauratnController.getLogin = (req: Request, res: Response) => {
   }
 };
 
-restauratnController.getSignup = (req: Request, res: Response) => {
+restaurantController.getSignup = (req: Request, res: Response) => {
   try {
     res.send("Signup Page");
   } catch (err) {
@@ -27,4 +27,4 @@ restauratnController.getSignup = (req: Request, res: Response) => {
   }
 };
 
-export default restauratnController;
+export default restaurantController;
