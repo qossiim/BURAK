@@ -76,3 +76,12 @@ function findLongestWord(str: string): string {
 }
 
 console.log(findLongestWord("I come from Uzbekistan"));
+
+/* project Standarts
+- Logging standanrts
+- Naming standarts
+function, method, variable, => Camel
+class: pascal
+folder => file: Kebab
+css:  snake
+*/
