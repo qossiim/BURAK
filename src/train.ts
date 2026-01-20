@@ -40,22 +40,39 @@
 // }
 
 // I-taks
-function majorityElement(arr: number[]): number {
-  const count: Record<number, number> = {};
+// function majorityElement(arr: number[]): number {
+//   const count: Record<number, number> = {};
 
-  let maxNum: number = arr[0];
-  let maxCount: number = 0;
+//   let maxNum: number = arr[0];
+//   let maxCount: number = 0;
 
-  for (const num of arr) {
-    count[num] = (count[num] || 0) + 1;
+//   for (const num of arr) {
+//     count[num] = (count[num] || 0) + 1;
 
-    if (count[num] > maxCount) {
-      maxCount = count[num];
-      maxNum = num;
+//     if (count[num] > maxCount) {
+//       maxCount = count[num];
+//       maxNum = num;
+//     }
+//   }
+
+//   return maxNum;
+// }
+
+// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
+
+// J-task
+
+function findLongestWord(str: string): string {
+  const words: string[] = str.split(" ");
+  let longest: string = "";
+
+  for (const word of words) {
+    if (word.length > longest.length) {
+      longest = word;
     }
   }
 
-  return maxNum;
+  return longest;
 }
 
-console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
+console.log(findLongestWord("I come from Uzbekistan"));
