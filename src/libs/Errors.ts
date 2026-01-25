@@ -4,15 +4,20 @@ export enum HttpCode {
   NOT_MODIFIED = 304,
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
-  FORBIDDEN = 404,
+  FORBIDDEN = 403,
+  NOT_FOUND = 404,
   INTERNAL_SERVER_ERROR = 500,
 }
 
 export enum Messege {
-  SOMETHING_WENT_WRONG = "Something went wrong!",
-  NO_DATA_FOUND = "No data is found",
-  CREATE_FAILED = "Cereate is failed",
-  UPDATE_FAILED = "Update is failed",
+  SOMETHING_WENT_WRONG = "Nimadir xatolik bor!",
+  NO_DATA_FOUND = "Hech qanday malumot topilmadi",
+  CREATE_FAILED = "Jarayon amalga oshmadi",
+  UPDATE_FAILED = "Yangilash amalga oshmadi",
+
+  USED_NICK_PHONE = "Siz ro'yxatdan o'tgan tel raqam kiritdingiz!",
+  NO_MEMBER_NICK = "Bu member mavjud emas!",
+  WRONG_PASSWORD = "Parol noto'g'ri, iltimos qaytib urinib ko'ring!",
 }
 
 class Errors extends Error {

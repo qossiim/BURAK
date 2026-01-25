@@ -62,20 +62,20 @@
 
 // J-task
 
-function findLongestWord(str: string): string {
-  const words: string[] = str.split(" ");
-  let longest: string = "";
+// function findLongestWord(str: string): string {
+//   const words: string[] = str.split(" ");
+//   let longest: string = "";
 
-  for (const word of words) {
-    if (word.length > longest.length) {
-      longest = word;
-    }
-  }
+//   for (const word of words) {
+//     if (word.length > longest.length) {
+//       longest = word;
+//     }
+//   }
 
-  return longest;
-}
+//   return longest;
+// }
 
-console.log(findLongestWord("I come from Uzbekistan"));
+// console.log(findLongestWord("I come from Uzbekistan"));
 
 /* project Standarts
 - Logging standanrts
@@ -85,3 +85,20 @@ class: pascal
 folder => file: Kebab
 css:  snake
 */
+
+function countVowels(text: string): number {
+  const vowels: string = "aeiouAEIOU";
+  let count: number = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    if (vowels.includes(text[i])) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(countVowels("string"));
+console.log(countVowels("Uzbekistan"));
+console.log(countVowels("Hello World"));
