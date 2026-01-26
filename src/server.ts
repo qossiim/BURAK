@@ -31,7 +31,10 @@ mongoose
     console.log(process.env.MONGO_URL);
     const PORT = process.env.PORT ?? 3003;
     app.listen(PORT, function () {
-      console.log(`THE server is running successfuly on port: ${PORT}`);
+      console.info(`THE server shu portda successfuly boldi port: ${PORT}`);
+      console.log(
+        `Admin loyixamiz shu portda yuradi http://localhost:${PORT}/admin \n`
+      );
     });
   })
   .catch((err) => console.log("MangoDB ishga tushmadi ", err));

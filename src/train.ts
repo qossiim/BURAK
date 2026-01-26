@@ -86,19 +86,30 @@ folder => file: Kebab
 css:  snake
 */
 
-function countVowels(text: string): number {
-  const vowels: string = "aeiouAEIOU";
-  let count: number = 0;
+// function countVowels(text: string): number {
+//   const vowels: string = "aeiouAEIOU";
+//   let count: number = 0;
 
-  for (let i = 0; i < text.length; i++) {
-    if (vowels.includes(text[i])) {
-      count++;
-    }
-  }
+//   for (let i = 0; i < text.length; i++) {
+//     if (vowels.includes(text[i])) {
+//       count++;
+//     }
+//   }
 
-  return count;
+//   return count;
+// }
+
+// console.log(countVowels("string"));
+// console.log(countVowels("Uzbekistan"));
+// console.log(countVowels("Hello World"));
+
+// L-TASK
+
+function reverseSentence(str: string): string {
+  return str
+    .split(" ")
+    .map((word: string) => word.split("").reverse().join(""))
+    .join(" ");
 }
 
-console.log(countVowels("string"));
-console.log(countVowels("Uzbekistan"));
-console.log(countVowels("Hello World"));
+console.log(reverseSentence("we like coding!"));
