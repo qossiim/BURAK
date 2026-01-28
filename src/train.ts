@@ -105,11 +105,26 @@ css:  snake
 
 // L-TASK
 
-function reverseSentence(str: string): string {
-  return str
-    .split(" ")
-    .map((word: string) => word.split("").reverse().join(""))
-    .join(" ");
-}
+// function reverseSentence(str: string): string {
+//   return str
+//     .split(" ")
+//     .map((word: string) => word.split("").reverse().join(""))
+//     .join(" ");
+// }
 
-console.log(reverseSentence("we like coding!"));
+// console.log(reverseSentence("we like coding!"));
+
+// M-TASK
+function getSquareNumbers(arr: number[]): { number: number; square: number }[] {
+  const result: { number: number; square: number }[] = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    result.push({
+      number: arr[i],
+      square: arr[i] * arr[i],
+    });
+  }
+
+  return result;
+}
+console.log(getSquareNumbers([1, 2, 3]));

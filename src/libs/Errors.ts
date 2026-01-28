@@ -18,6 +18,7 @@ export enum Messege {
   USED_NICK_PHONE = "Siz ro'yxatdan o'tgan tel raqam kiritdingiz!",
   NO_MEMBER_NICK = "Bu member mavjud emas!",
   WRONG_PASSWORD = "Parol noto'g'ri, iltimos qaytib urinib ko'ring!",
+  NOT_AUTHENTICATED = "Siz login bolmagansiz login boling iltimos!",
 }
 
 class Errors extends Error {
