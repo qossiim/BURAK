@@ -4,7 +4,7 @@ import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 import session from "express-session";
-import { Messege } from "../libs/Errors";
+import Errors, { Messege } from "../libs/Errors";
 // import MemberService from "../models/Member.service";
 
 const memberService = new MemberService();
@@ -62,10 +62,10 @@ restaurantController.processSignup = async (
     console.log("Error, processSignup:", err);
     console.log("Error, processLogin:", err);
     const message =
-      err instanceof Error ? err.message : Messege.SOMETHING_WENT_WRONG;
+      err instanceof Errors ? err.message : Messege.SOMETHING_WENT_WRONG;
 
     res.send(
-      `<script> alert("${Messege}"); window.location.replace('admin/login') </script>`
+      `<script> alert("${message}"); window.location.replace('admin/login') </script>`
     );
   }
 };
@@ -88,10 +88,10 @@ restaurantController.processLogin = async (
   } catch (err) {
     console.log("Error, processLogin:", err);
     const message =
-      err instanceof Error ? err.message : Messege.SOMETHING_WENT_WRONG;
+      err instanceof Errors ? err.message : Messege.SOMETHING_WENT_WRONG;
 
     res.send(
-      `<script> alert("${Messege}"); window.location.replace('admin/login') </script>`
+      `<script> alert("${message}"); window.location.replace('admin/login') </script>`
     );
   }
 };
