@@ -115,16 +115,61 @@ css:  snake
 // console.log(reverseSentence("we like coding!"));
 
 // M-TASK
-function getSquareNumbers(arr: number[]): { number: number; square: number }[] {
-  const result: { number: number; square: number }[] = [];
+// function getSquareNumbers(arr: number[]): { number: number; square: number }[] {
+//   const result: { number: number; square: number }[] = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    result.push({
-      number: arr[i],
-      square: arr[i] * arr[i],
-    });
+//   for (let i = 0; i < arr.length; i++) {
+//     result.push({
+//       number: arr[i],
+//       square: arr[i] * arr[i],
+//     });
+//   }
+
+//   return result;
+// }
+// console.log(getSquareNumbers([1, 2, 3]));
+
+/*
+ Request:                          // Klient (browser/app) serverga yuboradigan so‘rov turi (request tushunchasi)
+ Traditional Api                   // Oddiy (klassik) API: ko‘pincha server HTML yoki oddiy javob qaytaradi (SSR bilan ko‘p ishlatiladi)
+ Rest Api                          // REST API: URL + HTTP method (GET/POST/PUT/DELETE) orqali resurslar bilan ishlash uslubi
+ GraphQL Api                       // GraphQL API: bitta endpoint, kerakli datani aynan so‘rab olish (overfetch/underfetch kamayadi)
+ ...                               // Boshqa turlar ham bor degani (masalan: gRPC, SOAP, WebSocket va h.k.)
+*/
+
+/*
+ Frontend Development:             // Frontend yozish uslublari yo‘nalishi
+ Traditional FD   => SSR   => EJS   // Traditional FE: SSR (Server Side Render) -> HTML serverda render bo‘ladi, EJS template bilan sahifa chiqadi
+ Modern FD        => SPA   => REACT // Modern FE: SPA (Single Page App) -> sahifa bir marta yuklanadi, keyin JS bilan yangilanadi, React bilan quriladi
+*/
+
+/*
+ Cookies:                          // Cookie — browserda saqlanadigan kichik data (asosan session/token uchun)
+ request join                      // Request bilan “birga yuradi”: har so‘rovda cookie avtomatik serverga yuboriladi (sessionni tanitadi)
+ self destroy                      // O‘zi yo‘q bo‘lib ketadi: muddati tugasa (maxAge/expire) yoki browser yopilsa o‘chishi mumkin
+*/
+
+/*
+ Validation:                       // Validation — kiritilgan data to‘g‘riligini tekshirish
+ Frontend validation               // Frontendda tekshiruv: tez feedback (bo‘shmi, format to‘g‘rimi), UX yaxshi bo‘ladi
+ Backend validation                // Backendda tekshiruv: majburiy xavfsizlik (frontendni aldash mumkin), noto‘g‘ri datani qabul qilmaydi
+ Database validation               // DB-level tekshiruv: schema/constraint (masalan Mongoose schema validation, unique, required) bilan himoya
+*/
+
+// N-Task
+function palindromCheck(word: string): boolean {
+  let reversed: string = "";
+
+  for (let i = word.length - 1; i >= 0; i--) {
+    reversed += word[i];
   }
 
-  return result;
+  if (word === reversed) {
+    return true;
+  } else {
+    return false;
+  }
 }
-console.log(getSquareNumbers([1, 2, 3]));
+
+console.log(palindromCheck("dad")); // true
+console.log(palindromCheck("son")); // false

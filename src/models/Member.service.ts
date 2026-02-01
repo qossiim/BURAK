@@ -51,7 +51,7 @@ class MemberService {
 
   public async processSignup(input: MemberInput): Promise<Member> {
     const exist = await this.memberModel
-      .find({ memberType: MemberType.RESTAURANT })
+      .findOne({ memberType: MemberType.RESTAURANT })
       .exec();
     // console.log("exist:", exist);
     if (exist) throw new Errors(HttpCode.BAD_REQUEST, Messege.CREATE_FAILED);

@@ -1,11 +1,10 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 import session from "express-session";
 import Errors, { Messege } from "../libs/Errors";
-// import MemberService from "../models/Member.service";
 
 const memberService = new MemberService();
 
@@ -60,7 +59,6 @@ restaurantController.processSignup = async (
     });
   } catch (err) {
     console.log("Error, processSignup:", err);
-    console.log("Error, processLogin:", err);
     const message =
       err instanceof Errors ? err.message : Messege.SOMETHING_WENT_WRONG;
 
@@ -77,22 +75,27 @@ restaurantController.processLogin = async (
   try {
     console.log("processLogin");
     console.log("body:", req.body);
+
     const input: LoginInput = req.body;
     const result = await memberService.processLogin(input);
-    // TUDO: SESSIONS AUTHENTICATION
 
     req.session.member = result;
-    req.session.save(function () {
-      res.send(result);
+
+    req.session.save(() => {
+      res.redirect("/admin"); // LOGIN SUCCESS → HOME
     });
   } catch (err) {
     console.log("Error, processLogin:", err);
+
     const message =
       err instanceof Errors ? err.message : Messege.SOMETHING_WENT_WRONG;
 
-    res.send(
-      `<script> alert("${message}"); window.location.replace('admin/login') </script>`
-    );
+    res.send(`
+      <script>
+        alert("${message}");
+        window.location.replace("/admin/login");
+      </script>
+    `);
   }
 };
 
@@ -120,6 +123,22 @@ restaurantController.checkAuthSession = async (
   } catch (err) {
     console.log("Error, checkAuthSession:", err);
     res.send(err);
+  }
+};
+
+restaurantController.verifyRestaurant = (
+  req: AdminRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  if (req.session?.member?.memberType === MemberType.RESTAURANT) {
+    req.member = req.session.member;
+    next();
+  } else {
+    const message = Messege.NOT_AUTHENTICATED;
+    res.send(
+      `<script> alert("${message}"); window.location.replace('/admin/login'); </script>`
+    );
   }
 };
 
