@@ -50,25 +50,25 @@ class MemberService {
   /** SPA  O'zgarish yakuni */
 
   public async processSignup(input: MemberInput): Promise<Member> {
-    const exist = await this.memberModel
-      .findOne({ memberType: MemberType.RESTAURANT })
-      .exec();
-    // console.log("exist:", exist);
+    // Promise faqat async da ishlatiladi
+    const exist = await this.memberModel // exist --> data databaseda mavjudmi yoki yoqmi shuni tekshirib beradi
+      .findOne({ memberType: MemberType.RESTAURANT }) // .findOne(); -> mos keladigan 1 ta hujjat qidiradi
+      .exec(); // exec(); -> querylarlar ketma-ketligini yakunlanganligini ogohlantiruvchi method.
+    console.log("exist:", exist); // MongoDB dan qaytgan natija
+
     if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
 
-    // console.log("before:", input.memberPassword);
+    console.log("before:", input.memberPassword);
+
     const salt = await bcrypt.genSalt();
     input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
-    // console.log("after:", input.memberPassword);
+
+    console.log("after:", input.memberPassword);
 
     try {
-      const tempResult = new this.memberModel(input);
-      const result = await tempResult.save();
-
-      (result as any).memberPassword = "";
-
-      // return result;  buni ishlatsam mongusni type tog'ri kelmadi
-
+      const result = await this.memberModel.create(input);
+      result.memberPassword = "";
+      //
       return result.toObject() as Member;
     } catch (err) {
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
@@ -78,8 +78,8 @@ class MemberService {
   public async processLogin(input: LoginInput): Promise<Member> {
     const member = await this.memberModel
       .findOne(
-        { memberNick: input.memberNick },
-        { memberNick: 1, memberPassword: 1 }
+        { memberNick: input.memberNick }, // Filter
+        { memberNick: 1, memberPassword: 1 } // Projection | memberPassword: 1, -> majburiy chaqirib olish mexanizmi!...
       )
       .exec();
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
@@ -89,16 +89,11 @@ class MemberService {
       member.memberPassword
     );
 
-    // const isMatch = input.memberPassword === member.memberPassword;
-    // console.log("isMatch;", isMatch);
     if (!isMatch) {
       throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
     }
 
     return await this.memberModel.findById(member._id).exec();
-
-    // console.log("member:", member);
-    // return member;
   }
 }
 

@@ -31,8 +31,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
 
 restaurantController.getLogin = (req: Request, res: Response) => {
   try {
-    console.log("Login Page");
-    res.render("Login");
+    res.render("login");
   } catch (err) {
     console.log("Error, getLogin:", err);
     res.redirect("/admin");
@@ -50,7 +49,7 @@ restaurantController.processSignup = async (
       throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
 
     const newMember: MemberInput = req.body;
-    newMember.memberImage = file?.path.replace(/\\/g, "/");
+    newMember.memberImage = file?.path; // window bosa replace(/\\/g, "/");
 
     newMember.memberType = MemberType.RESTAURANT;
     const result = await memberService.processSignup(newMember);
@@ -91,12 +90,9 @@ restaurantController.processLogin = async (
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
 
-    res.send(`
-      <script>
-        alert("${message}");
-        window.location.replace("/admin/login");
-      </script>
-    `);
+    res.send(
+      `<script> alert("${message}"); window.location.replace('admin/login')</script>`
+    );
   }
 };
 

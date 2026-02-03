@@ -58,11 +58,9 @@ productController.createNewProduct = async (
 productController.updateChosenProduct = async (req: Request, res: Response) => {
   try {
     console.log("updateChosenProduct");
-    const id = req.params.id;
+    const id = req.params.id as string;
 
-    //  const result = await productService.updateChosenProduct(id, req.body); // buni ishlatsam error berdi
-    const fixedId = Array.isArray(id) ? id[0] : id;
-    const result = await productService.updateChosenProduct(fixedId, req.body);
+    const result = await productService.updateChosenProduct(id, req.body);
 
     res.status(HttpCode.OK).json({ data: result });
   } catch (err) {
