@@ -9,7 +9,7 @@ export enum HttpCode {
   INTERNAL_SERVER_ERROR = 500,
 }
 
-export enum Messege {
+export enum Message {
   SOMETHING_WENT_WRONG = "Nimadir xatolik bor!",
   NO_DATA_FOUND = "Hech qanday malumot topilmadi",
   CREATE_FAILED = "Jarayon amalga oshmadi",
@@ -23,17 +23,17 @@ export enum Messege {
 
 class Errors extends Error {
   public code: HttpCode;
-  public messege: Messege;
+  public message: Message;
 
   static standard = {
     code: HttpCode.INTERNAL_SERVER_ERROR,
-    messege: Messege.SOMETHING_WENT_WRONG,
+    message: Message.SOMETHING_WENT_WRONG,
   };
 
-  constructor(statusCode: HttpCode, statusMessege: Messege) {
+  constructor(statusCode: HttpCode, statusMessage: Message) {
     super();
     this.code = statusCode;
-    this.messege = statusMessege;
+    this.message = statusMessage;
   }
 }
 

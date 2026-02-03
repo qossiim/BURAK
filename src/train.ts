@@ -157,19 +157,64 @@ css:  snake
 */
 
 // N-Task
-function palindromCheck(word: string): boolean {
-  let reversed: string = "";
+// function palindromCheck(word: string): boolean {
+// // palindromCheck — palindrom ekanligini tekshiruvchi funksiya
+// // word: string — tekshiriladigan so‘z
+// // : boolean — natijada true yoki false qaytaradi
 
-  for (let i = word.length - 1; i >= 0; i--) {
-    reversed += word[i];
+//   let reversed: string = "";
+//   // reversed — so‘zning teskari variantini yig‘ish uchun bo‘sh string
+
+//   for (let i = word.length - 1; i >= 0; i--) {
+//   // for loop — so‘zning oxirgi harfidan (length - 1) boshlab yuradi
+//   // i >= 0 — birinchi harfgacha kelguncha davom etadi
+//   // i-- — har safar indeksni bittaga kamaytiradi
+
+//     reversed += word[i];
+//     // word[i] — so‘zning i-indexdagi harfi
+//     // += — shu harfni reversed oxiriga qo‘shadi
+//   }
+
+//   if (word === reversed) {
+//   // agar original so‘z va teskari yozilgan so‘z bir xil bo‘lsa
+
+//     return true;
+//     // palindrom bo‘lsa true qaytaradi
+//   } else {
+//     return false;
+//     // palindrom bo‘lmasa false qaytaradi
+//   }
+// }
+// console.log(palindromCheck("dad")); // true
+// console.log(palindromCheck("son")); // false
+
+// O - Task
+function calculateSumOfNumbers(arr: any[]): number {
+  // calculateSumOfNumbers — funksiya nomi
+  // arr: any[] — har xil type (number, string, object, boolean va h.k.) bo‘lgan array qabul qiladi
+  // : number — funksiya oxirida number qaytarishini bildiradi
+
+  let sum: number = 0;
+  // sum — sonlar yig‘indisini saqlash uchun o‘zgaruvchi
+  // boshlanishida 0 ga teng qilib olinadi
+
+  for (let i = 0; i < arr.length; i++) {
+    // for loop — array ichidan boshidan oxirigacha yuradi
+    // i = 0 — birinchi elementdan boshlaydi
+    // i < arr.length — array tugaguncha davom etadi
+
+    if (typeof arr[i] === "number") {
+      // typeof arr[i] — hozirgi elementning type’ini tekshiradi
+      // agar element number bo‘lsa, shart true bo‘ladi
+
+      sum += arr[i];
+      // agar number bo‘lsa, shu son sum ga qo‘shiladi
+      // masalan: sum = sum + arr[i]
+    }
   }
 
-  if (word === reversed) {
-    return true;
-  } else {
-    return false;
-  }
+  return sum;
+  // loop tugagandan keyin faqat sonlar yig‘indisini qaytaradi
 }
 
-console.log(palindromCheck("dad")); // true
-console.log(palindromCheck("son")); // false
+calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]);
