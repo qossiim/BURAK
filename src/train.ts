@@ -188,33 +188,64 @@ css:  snake
 // console.log(palindromCheck("dad")); // true
 // console.log(palindromCheck("son")); // false
 
-// O - Task
-function calculateSumOfNumbers(arr: any[]): number {
-  // calculateSumOfNumbers — funksiya nomi
-  // arr: any[] — har xil type (number, string, object, boolean va h.k.) bo‘lgan array qabul qiladi
-  // : number — funksiya oxirida number qaytarishini bildiradi
+// // O - Task
+// function calculateSumOfNumbers(arr: any[]): number {
+//   // calculateSumOfNumbers — funksiya nomi
+//   // arr: any[] — har xil type (number, string, object, boolean va h.k.) bo‘lgan array qabul qiladi
+//   // : number — funksiya oxirida number qaytarishini bildiradi
 
-  let sum: number = 0;
-  // sum — sonlar yig‘indisini saqlash uchun o‘zgaruvchi
-  // boshlanishida 0 ga teng qilib olinadi
+//   let sum: number = 0;
+//   // sum — sonlar yig‘indisini saqlash uchun o‘zgaruvchi
+//   // boshlanishida 0 ga teng qilib olinadi
 
-  for (let i = 0; i < arr.length; i++) {
-    // for loop — array ichidan boshidan oxirigacha yuradi
-    // i = 0 — birinchi elementdan boshlaydi
-    // i < arr.length — array tugaguncha davom etadi
+//   for (let i = 0; i < arr.length; i++) {
+//     // for loop — array ichidan boshidan oxirigacha yuradi
+//     // i = 0 — birinchi elementdan boshlaydi
+//     // i < arr.length — array tugaguncha davom etadi
 
-    if (typeof arr[i] === "number") {
-      // typeof arr[i] — hozirgi elementning type’ini tekshiradi
-      // agar element number bo‘lsa, shart true bo‘ladi
+//     if (typeof arr[i] === "number") {
+//       // typeof arr[i] — hozirgi elementning type’ini tekshiradi
+//       // agar element number bo‘lsa, shart true bo‘ladi
 
-      sum += arr[i];
-      // agar number bo‘lsa, shu son sum ga qo‘shiladi
-      // masalan: sum = sum + arr[i]
+//       sum += arr[i];
+//       // agar number bo‘lsa, shu son sum ga qo‘shiladi
+//       // masalan: sum = sum + arr[i]
+//     }
+//   }
+
+//   return sum;
+//   // loop tugagandan keyin faqat sonlar yig‘indisini qaytaradi
+// }
+
+// calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]);
+
+// N-Task
+
+function objectToArray(obj: Record<string, any>): [string, any][] {
+  // objectToArray — function nomi
+  // obj — qabul qilinayotgan object
+  // Record<string, any> — key: string, value: ixtiyoriy type degani
+  // [string, any][] — qaytadigan natija: array ichida array (["a", 10])
+
+  const result: [string, any][] = [];
+  // result — bo‘sh array
+  // bu yerda oxirida hosil bo‘ladigan juftliklar saqlanadi
+
+  for (const key in obj) {
+    // for...in — object ichidagi har bir key ni ketma-ket oladi
+    // masalan: "a", keyin "b"
+
+    if (obj.hasOwnProperty(key)) {
+      // hasOwnProperty — faqat object’ning o‘ziga tegishli property’larni oladi
+      // prototypedan kelganlarini tashlab yuboradi
+
+      result.push([key, obj[key]]);
+      // result.push — array ichiga qo‘shadi
+      // [key, obj[key]] — masalan ["a", 10]
     }
   }
 
-  return sum;
-  // loop tugagandan keyin faqat sonlar yig‘indisini qaytaradi
+  return result;
+  // tayyor bo‘lgan array qaytariladi
 }
-
-calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]);
+console.log(objectToArray({ a: 10, b: 20 }));
