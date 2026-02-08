@@ -221,31 +221,55 @@ css:  snake
 
 // N-Task
 
-function objectToArray(obj: Record<string, any>): [string, any][] {
-  // objectToArray — function nomi
-  // obj — qabul qilinayotgan object
-  // Record<string, any> — key: string, value: ixtiyoriy type degani
-  // [string, any][] — qaytadigan natija: array ichida array (["a", 10])
+// function objectToArray(obj: Record<string, any>): [string, any][] {
+//   // objectToArray — function nomi
+//   // obj — qabul qilinayotgan object
+//   // Record<string, any> — key: string, value: ixtiyoriy type degani
+//   // [string, any][] — qaytadigan natija: array ichida array (["a", 10])
 
-  const result: [string, any][] = [];
-  // result — bo‘sh array
-  // bu yerda oxirida hosil bo‘ladigan juftliklar saqlanadi
+//   const result: [string, any][] = [];
+//   // result — bo‘sh array
+//   // bu yerda oxirida hosil bo‘ladigan juftliklar saqlanadi
 
-  for (const key in obj) {
-    // for...in — object ichidagi har bir key ni ketma-ket oladi
-    // masalan: "a", keyin "b"
+//   for (const key in obj) {
+//     // for...in — object ichidagi har bir key ni ketma-ket oladi
+//     // masalan: "a", keyin "b"
 
-    if (obj.hasOwnProperty(key)) {
-      // hasOwnProperty — faqat object’ning o‘ziga tegishli property’larni oladi
-      // prototypedan kelganlarini tashlab yuboradi
+//     if (obj.hasOwnProperty(key)) {
+//       // hasOwnProperty — faqat object’ning o‘ziga tegishli property’larni oladi
+//       // prototypedan kelganlarini tashlab yuboradi
 
-      result.push([key, obj[key]]);
-      // result.push — array ichiga qo‘shadi
-      // [key, obj[key]] — masalan ["a", 10]
-    }
-  }
+//       result.push([key, obj[key]]);
+//       // result.push — array ichiga qo‘shadi
+//       // [key, obj[key]] — masalan ["a", 10]
+//     }
+//   }
 
-  return result;
-  // tayyor bo‘lgan array qaytariladi
+//   return result;
+//   // tayyor bo‘lgan array qaytariladi
+// }
+// console.log(objectToArray({ a: 10, b: 20 }));
+
+
+ // Q-task 
+
+ function hasProperty(obj: Record<string, any>, key: string): boolean {
+  // hasProperty nomli function e’lon qilinyapti.
+  // obj → tekshiriladigan object
+  // key → qidirilayotgan property nomi (string)
+  // function natijasi boolean (true yoki false) bo‘ladi
+
+  return key in obj;
+  // "in" operatori ishlatilayapti
+  // Agar key obj ichida property sifatida mavjud bo‘lsa → true
+  // Agar mavjud bo‘lmasa → false qaytaradi
 }
-console.log(objectToArray({ a: 10, b: 20 }));
+
+
+hasProperty({ name: "BMW", model: "M3" }, "model");
+// "model" degan property object ichida bor
+// natija: true
+
+hasProperty({ name: "BMW", model: "M3" }, "year");
+// "year" degan property object ichida yo‘q
+// natija: false
