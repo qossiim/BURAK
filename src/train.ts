@@ -253,23 +253,49 @@ css:  snake
 
  // Q-task 
 
- function hasProperty(obj: Record<string, any>, key: string): boolean {
-  // hasProperty nomli function e’lon qilinyapti.
-  // obj → tekshiriladigan object
-  // key → qidirilayotgan property nomi (string)
-  // function natijasi boolean (true yoki false) bo‘ladi
+//  function hasProperty(obj: Record<string, any>, key: string): boolean {
+//   // hasProperty nomli function e’lon qilinyapti.
+//   // obj → tekshiriladigan object
+//   // key → qidirilayotgan property nomi (string)
+//   // function natijasi boolean (true yoki false) bo‘ladi
 
-  return key in obj;
-  // "in" operatori ishlatilayapti
-  // Agar key obj ichida property sifatida mavjud bo‘lsa → true
-  // Agar mavjud bo‘lmasa → false qaytaradi
+//   return key in obj;
+//   // "in" operatori ishlatilayapti
+//   // Agar key obj ichida property sifatida mavjud bo‘lsa → true
+//   // Agar mavjud bo‘lmasa → false qaytaradi
+// }
+
+
+// hasProperty({ name: "BMW", model: "M3" }, "model");
+// // "model" degan property object ichida bor
+// // natija: true
+
+// hasProperty({ name: "BMW", model: "M3" }, "year");
+// // "year" degan property object ichida yo‘q
+// // natija: false
+
+// R - Task 
+
+function calculate(value: string): number {
+  // calculate nomli funksiya, string qabul qiladi va number qaytaradi
+
+  const parts: string[] = value.split("+");
+  // "1+3" kelganda split("+") uni ["1", "3"] array ga ajratadi
+
+  let sum: number = 0;
+  // Yig‘indini saqlash uchun boshlang‘ich qiymat 0
+
+  for (let i = 0; i < parts.length; i++) {
+  // Array ichidagi har bir element bo‘yicha aylanish
+
+    sum += Number(parts[i]);
+    // parts[i] → string ("1")
+    // Number(parts[i]) → number (1)
+    // sum ga qo‘shib boradi
+  }
+
+  return sum;
+  // Oxirida barcha sonlar yig‘indisini qaytaradi
 }
-
-
-hasProperty({ name: "BMW", model: "M3" }, "model");
-// "model" degan property object ichida bor
-// natija: true
-
-hasProperty({ name: "BMW", model: "M3" }, "year");
-// "year" degan property object ichida yo‘q
-// natija: false
+calculate("1+3");      
+calculate("10+20+5"); 
