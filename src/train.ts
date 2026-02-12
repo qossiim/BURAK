@@ -250,8 +250,7 @@ css:  snake
 // }
 // console.log(objectToArray({ a: 10, b: 20 }));
 
-
- // Q-task 
+// Q-task
 
 //  function hasProperty(obj: Record<string, any>, key: string): boolean {
 //   // hasProperty nomli function e’lon qilinyapti.
@@ -265,7 +264,6 @@ css:  snake
 //   // Agar mavjud bo‘lmasa → false qaytaradi
 // }
 
-
 // hasProperty({ name: "BMW", model: "M3" }, "model");
 // // "model" degan property object ichida bor
 // // natija: true
@@ -274,28 +272,50 @@ css:  snake
 // // "year" degan property object ichida yo‘q
 // // natija: false
 
-// R - Task 
+// R - Task
 
-function calculate(value: string): number {
-  // calculate nomli funksiya, string qabul qiladi va number qaytaradi
+// function calculate(value: string): number {
+//   // calculate nomli funksiya, string qabul qiladi va number qaytaradi
 
-  const parts: string[] = value.split("+");
-  // "1+3" kelganda split("+") uni ["1", "3"] array ga ajratadi
+//   const parts: string[] = value.split("+");
+//   // "1+3" kelganda split("+") uni ["1", "3"] array ga ajratadi
 
-  let sum: number = 0;
-  // Yig‘indini saqlash uchun boshlang‘ich qiymat 0
+//   let sum: number = 0;
+//   // Yig‘indini saqlash uchun boshlang‘ich qiymat 0
 
-  for (let i = 0; i < parts.length; i++) {
-  // Array ichidagi har bir element bo‘yicha aylanish
+//   for (let i = 0; i < parts.length; i++) {
+//   // Array ichidagi har bir element bo‘yicha aylanish
 
-    sum += Number(parts[i]);
-    // parts[i] → string ("1")
-    // Number(parts[i]) → number (1)
-    // sum ga qo‘shib boradi
+//     sum += Number(parts[i]);
+//     // parts[i] → string ("1")
+//     // Number(parts[i]) → number (1)
+//     // sum ga qo‘shib boradi
+//   }
+
+//   return sum;
+//   // Oxirida barcha sonlar yig‘indisini qaytaradi
+// }
+// calculate("1+3");
+// calculate("10+20+5");
+
+// S- task
+
+function missingNumber(nums: number[]): number {
+  const n = nums.length; // Array uzunligi
+  let expectedSum = 0; // 0 dan n gacha bo‘lgan sonlar yig‘indisi
+  let actualSum = 0; // Array ichidagi sonlar yig‘indisi
+
+  // 0 dan n gacha bo‘lgan sonlarni qo‘shamiz
+  for (let i = 0; i <= n; i++) {
+    expectedSum += i;
   }
 
-  return sum;
-  // Oxirida barcha sonlar yig‘indisini qaytaradi
+  // Array ichidagi sonlarni qo‘shamiz
+  for (let i = 0; i < n; i++) {
+    actualSum += nums[i];
+  }
+
+  return expectedSum - actualSum; // Farqi = tushib qolgan son
 }
-calculate("1+3");      
-calculate("10+20+5"); 
+
+console.log(missingNumber([3, 0, 1]));
