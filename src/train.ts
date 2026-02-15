@@ -300,22 +300,89 @@ css:  snake
 
 // S- task
 
-function missingNumber(nums: number[]): number {
-  const n = nums.length; // Array uzunligi
-  let expectedSum = 0; // 0 dan n gacha bo‘lgan sonlar yig‘indisi
-  let actualSum = 0; // Array ichidagi sonlar yig‘indisi
+// function missingNumber(nums: number[]): number {
+//   const n = nums.length; // Array uzunligi
+//   let expectedSum = 0; // 0 dan n gacha bo‘lgan sonlar yig‘indisi
+//   let actualSum = 0; // Array ichidagi sonlar yig‘indisi
 
-  // 0 dan n gacha bo‘lgan sonlarni qo‘shamiz
-  for (let i = 0; i <= n; i++) {
-    expectedSum += i;
+//   // 0 dan n gacha bo‘lgan sonlarni qo‘shamiz
+//   for (let i = 0; i <= n; i++) {
+//     expectedSum += i;
+//   }
+
+//   // Array ichidagi sonlarni qo‘shamiz
+//   for (let i = 0; i < n; i++) {
+//     actualSum += nums[i];
+//   }
+
+//   return expectedSum - actualSum; // Farqi = tushib qolgan son
+// }
+
+// console.log(missingNumber([3, 0, 1]));
+
+// T-task
+
+function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+  // arr1: number[] → birinchi array faqat numberlardan iborat
+  // arr2: number[] → ikkinchi array faqat numberlardan iborat
+  // : number[] → function oxirida number array qaytaradi
+
+  const result: number[] = [];
+  // result degan yangi bo‘sh array yaratildi
+  // barcha tartiblangan sonlar shu yerga saqlanadi
+
+  let i: number = 0;
+  // arr1 uchun index (ko‘rsatkich)
+
+  let j: number = 0;
+  // arr2 uchun index (ko‘rsatkich)
+
+  while (i < arr1.length && j < arr2.length) {
+    // ikkala array ham tugamaguncha loop ishlaydi
+
+    if (arr1[i] <= arr2[j]) {
+      // agar arr1 dagi son kichik yoki teng bo‘lsa
+
+      result.push(arr1[i]);
+      // arr1 dagi son result ga qo‘shiladi
+
+      i++;
+      // arr1 index 1 taga oshadi
+    } else {
+      // aks holda arr2 dagi son kichik bo‘ladi
+
+      result.push(arr2[j]);
+      // arr2 dagi son result ga qo‘shiladi
+
+      j++;
+      // arr2 index 1 taga oshadi
+    }
   }
 
-  // Array ichidagi sonlarni qo‘shamiz
-  for (let i = 0; i < n; i++) {
-    actualSum += nums[i];
+  while (i < arr1.length) {
+    // agar arr1 da element qolgan bo‘lsa
+
+    result.push(arr1[i]);
+    // qolgan element result ga qo‘shiladi
+
+    i++;
+    // index oshadi
   }
 
-  return expectedSum - actualSum; // Farqi = tushib qolgan son
+  while (j < arr2.length) {
+    // agar arr2 da element qolgan bo‘lsa
+
+    result.push(arr2[j]);
+    // qolgan element result ga qo‘shiladi
+
+    j++;
+    // index oshadi
+  }
+
+  return result;
+  // tartiblangan yangi array qaytariladi
 }
 
-console.log(missingNumber([3, 0, 1]));
+const merged: number[] = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+
+console.log(merged);
