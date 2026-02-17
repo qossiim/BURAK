@@ -322,67 +322,83 @@ css:  snake
 
 // T-task
 
-function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
-  // arr1: number[] → birinchi array faqat numberlardan iborat
-  // arr2: number[] → ikkinchi array faqat numberlardan iborat
-  // : number[] → function oxirida number array qaytaradi
+// function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+//   // arr1: number[] → birinchi array faqat numberlardan iborat
+//   // arr2: number[] → ikkinchi array faqat numberlardan iborat
+//   // : number[] → function oxirida number array qaytaradi
 
-  const result: number[] = [];
-  // result degan yangi bo‘sh array yaratildi
-  // barcha tartiblangan sonlar shu yerga saqlanadi
+//   const result: number[] = [];
+//   // result degan yangi bo‘sh array yaratildi
+//   // barcha tartiblangan sonlar shu yerga saqlanadi
 
-  let i: number = 0;
-  // arr1 uchun index (ko‘rsatkich)
+//   let i: number = 0;
+//   // arr1 uchun index (ko‘rsatkich)
 
-  let j: number = 0;
-  // arr2 uchun index (ko‘rsatkich)
+//   let j: number = 0;
+//   // arr2 uchun index (ko‘rsatkich)
 
-  while (i < arr1.length && j < arr2.length) {
-    // ikkala array ham tugamaguncha loop ishlaydi
+//   while (i < arr1.length && j < arr2.length) {
+//     // ikkala array ham tugamaguncha loop ishlaydi
 
-    if (arr1[i] <= arr2[j]) {
-      // agar arr1 dagi son kichik yoki teng bo‘lsa
+//     if (arr1[i] <= arr2[j]) {
+//       // agar arr1 dagi son kichik yoki teng bo‘lsa
 
-      result.push(arr1[i]);
-      // arr1 dagi son result ga qo‘shiladi
+//       result.push(arr1[i]);
+//       // arr1 dagi son result ga qo‘shiladi
 
-      i++;
-      // arr1 index 1 taga oshadi
-    } else {
-      // aks holda arr2 dagi son kichik bo‘ladi
+//       i++;
+//       // arr1 index 1 taga oshadi
+//     } else {
+//       // aks holda arr2 dagi son kichik bo‘ladi
 
-      result.push(arr2[j]);
-      // arr2 dagi son result ga qo‘shiladi
+//       result.push(arr2[j]);
+//       // arr2 dagi son result ga qo‘shiladi
 
-      j++;
-      // arr2 index 1 taga oshadi
-    }
+//       j++;
+//       // arr2 index 1 taga oshadi
+//     }
+//   }
+
+//   while (i < arr1.length) {
+//     // agar arr1 da element qolgan bo‘lsa
+
+//     result.push(arr1[i]);
+//     // qolgan element result ga qo‘shiladi
+
+//     i++;
+//     // index oshadi
+//   }
+
+//   while (j < arr2.length) {
+//     // agar arr2 da element qolgan bo‘lsa
+
+//     result.push(arr2[j]);
+//     // qolgan element result ga qo‘shiladi
+
+//     j++;
+//     // index oshadi
+//   }
+
+//   return result;
+//   // tartiblangan yangi array qaytariladi
+// }
+
+// const merged: number[] = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+
+// console.log(merged);
+
+// S-Task
+
+function sumOdds(n: number): number {
+  let count: number = 0;
+
+  for (let i: number = 1; i < n; i += 2) {
+    count++;
   }
 
-  while (i < arr1.length) {
-    // agar arr1 da element qolgan bo‘lsa
-
-    result.push(arr1[i]);
-    // qolgan element result ga qo‘shiladi
-
-    i++;
-    // index oshadi
-  }
-
-  while (j < arr2.length) {
-    // agar arr2 da element qolgan bo‘lsa
-
-    result.push(arr2[j]);
-    // qolgan element result ga qo‘shiladi
-
-    j++;
-    // index oshadi
-  }
-
-  return result;
-  // tartiblangan yangi array qaytariladi
+  return count;
 }
-
-const merged: number[] = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
-
-console.log(merged);
+console.log(sumOdds(9));
+console.log(sumOdds(11));
+console.log(sumOdds(1));
+console.log(sumOdds(2));
