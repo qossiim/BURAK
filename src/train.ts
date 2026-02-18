@@ -389,16 +389,35 @@ css:  snake
 
 // S-Task
 
-function sumOdds(n: number): number {
-  let count: number = 0;
+// function sumOdds(n: number): number {
+//   let count: number = 0;
 
-  for (let i: number = 1; i < n; i += 2) {
-    count++;
+//   for (let i: number = 1; i < n; i += 2) {
+//     count++;
+//   }
+
+//   return count;
+// }
+// console.log(sumOdds(9));
+// console.log(sumOdds(11));
+// console.log(sumOdds(1));
+// console.log(sumOdds(2));
+
+// V-task 
+
+function countChars(str: string): { [key: string]: number } {
+  const result: { [key: string]: number } = {};
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    if (result[char]) {
+      result[char] = result[char] + 1;
+    } else {
+      result[char] = 1;
+    }
   }
 
-  return count;
+  return result;
 }
-console.log(sumOdds(9));
-console.log(sumOdds(11));
-console.log(sumOdds(1));
-console.log(sumOdds(2));
+console.log(countChars("hello"));
