@@ -403,21 +403,35 @@ css:  snake
 // console.log(sumOdds(1));
 // console.log(sumOdds(2));
 
-// V-task 
+// V-task
 
-function countChars(str: string): { [key: string]: number } {
-  const result: { [key: string]: number } = {};
+// function countChars(str: string): { [key: string]: number } {
+//   const result: { [key: string]: number } = {};
 
-  for (let i = 0; i < str.length; i++) {
-    const char = str[i];
+//   for (let i = 0; i < str.length; i++) {
+//     const char = str[i];
 
-    if (result[char]) {
-      result[char] = result[char] + 1;
-    } else {
-      result[char] = 1;
-    }
+//     if (result[char]) {
+//       result[char] = result[char] + 1;
+//     } else {
+//       result[char] = 1;
+//     }
+//   }
+
+//   return result;
+// }
+// console.log(countChars("hello"));
+
+// W - Task
+
+function chunkArray(arr: number[], size: number): number[][] {
+  const result: number[][] = [];
+
+  for (let i = 0; i < arr.length; i += size) {
+    const chunk = arr.slice(i, i + size);
+    result.push(chunk);
   }
 
   return result;
 }
-console.log(countChars("hello"));
+console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
