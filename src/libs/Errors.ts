@@ -20,6 +20,7 @@ export enum Message {
   BLOCKED_USER = "siz blokdasiz iltomos, Restarandga murojat qiling!",
   WRONG_PASSWORD = "Parol noto'g'ri, iltimos qaytib urinib ko'ring!",
   NOT_AUTHENTICATED = "Siz login bolmagansiz login boling iltimos!",
+  TOKEN_CREATION_FAILED = "Tokenda muamo bor!",
 }
 
 class Errors extends Error {
