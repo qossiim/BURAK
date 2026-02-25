@@ -436,31 +436,45 @@ css:  snake
 // }
 // console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
 
+// X-TASK
 
- // X-TASK 
+//  function countOccurrences(obj: any, key: string): number {
+//   let count = 0;
 
- function countOccurrences(obj: any, key: string): number {
-  let count = 0;
+//   for (const prop in obj) {
+//     if (prop === key) {
+//       count++;
+//     }
 
-  for (const prop in obj) {
-    if (prop === key) {
-      count++;
-    }
+//     if (typeof obj[prop] === "object" && obj[prop] !== null) {
+//       count += countOccurrences(obj[prop], key);
+//     }
+//   }
 
-    if (typeof obj[prop] === "object" && obj[prop] !== null) {
-      count += countOccurrences(obj[prop], key);
+//   return count;
+// }
+
+// const car = {
+//   model: "Bugatti",
+//   steer: {
+//     model: "HANKOOK",
+//     size: 30
+//   }
+// };
+
+// console.log(countOccurrences(car, "model"));
+
+// Y-Task
+
+function findIntersection(arr1: number[], arr2: number[]): number[] {
+  const result: number[] = [];
+
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr2.includes(arr1[i]) && !result.includes(arr1[i])) {
+      result.push(arr1[i]);
     }
   }
 
-  return count;
+  return result;
 }
-
-const car = {
-  model: "Bugatti",
-  steer: {
-    model: "HANKOOK",
-    size: 30
-  }
-};
-
-console.log(countOccurrences(car, "model")); 
+console.log(findIntersection([1, 2, 3], [3, 2, 0]));
