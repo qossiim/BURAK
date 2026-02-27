@@ -466,15 +466,31 @@ css:  snake
 
 // Y-Task
 
-function findIntersection(arr1: number[], arr2: number[]): number[] {
-  const result: number[] = [];
+// function findIntersection(arr1: number[], arr2: number[]): number[] {
+//   const result: number[] = [];
 
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr2.includes(arr1[i]) && !result.includes(arr1[i])) {
-      result.push(arr1[i]);
+//   for (let i = 0; i < arr1.length; i++) {
+//     if (arr2.includes(arr1[i]) && !result.includes(arr1[i])) {
+//       result.push(arr1[i]);
+//     }
+//   }
+
+//   return result;
+// }
+// console.log(findIntersection([1, 2, 3], [3, 2, 0]));
+
+// X - Task
+
+function sumEvens(arr: number[]): number {
+  let sum: number = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      sum += arr[i];
     }
   }
 
-  return result;
+  return sum;
 }
-console.log(findIntersection([1, 2, 3], [3, 2, 0]));
+sumEvens([1, 2, 3]);
+sumEvens([2, 4, 5, 6]);
