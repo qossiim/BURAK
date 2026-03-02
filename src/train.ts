@@ -481,16 +481,26 @@ css:  snake
 
 // X - Task
 
-function sumEvens(arr: number[]): number {
-  let sum: number = 0;
+// function sumEvens(arr: number[]): number {
+//   let sum: number = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 2 === 0) {
-      sum += arr[i];
-    }
-  }
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] % 2 === 0) {
+//       sum += arr[i];
+//     }
+//   }
 
-  return sum;
+//   return sum;
+// }
+// sumEvens([1, 2, 3]);
+// sumEvens([2, 4, 5, 6]);
+
+ 
+// ZA -Task 
+
+function sortByAge(arr: { age: number }[]): { age: number }[] {
+  return arr.sort((a, b) => a.age - b.age);
 }
-sumEvens([1, 2, 3]);
-sumEvens([2, 4, 5, 6]);
+const data = [{ age: 23 }, { age: 21 }, { age: 13 }];
+
+console.log(sortByAge(data));
