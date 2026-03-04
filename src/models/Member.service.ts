@@ -1,4 +1,4 @@
- import MemberModel from "../schema/Member.model";
+import MemberModel from "../schema/Member.model";
 import {
   LoginInput,
   Member,
@@ -17,19 +17,17 @@ class MemberService {
     this.memberModel = MemberModel;
   }
   /** SPA O'zgarish boshlanishi*/
-  
+
   public async getRestaurant(): Promise<Member> {
-  const result = await this.memberModel
-    .findOne({ memberType: MemberType.RESTAURANT })
-    .lean()
-    .exec();
+    const result = await this.memberModel
+      .findOne({ memberType: MemberType.RESTAURANT })
+      .lean()
+      .exec();
     result.target = "Test";
-  if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-  return result;
-}
-
-
+    return result;
+  }
 
   public async signup(input: MemberInput): Promise<Member> {
     const salt = await bcrypt.genSalt();
@@ -88,32 +86,45 @@ class MemberService {
   ): Promise<Member> {
     const memberId = shapeIntoMongooseObjectId(member._id);
     const result = await this.memberModel
-    .findOneAndUpdate({ _id: memberId}, input, {new: true})
-    .exec();
-    if(!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
+      .findOneAndUpdate({ _id: memberId }, input, { new: true })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
 
     return result;
   }
 
   public async getTopUsers(): Promise<Member[]> {
-  const result = await this.memberModel
-    .find({
-      memberStatus: MemberStatus.ACTIVE,
-      memberPoints: { $gte: 1 },
-    })
-    .sort({ memberPoints: -1 }) // desc 
-    .limit(4)
-    .exec();
+    const result = await this.memberModel
+      .find({
+        memberStatus: MemberStatus.ACTIVE,
+        memberPoints: { $gte: 1 },
+      })
+      .sort({ memberPoints: -1 }) // desc
+      .limit(4)
+      .exec();
 
-  if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-  return result;
-}
+    return result;
+  }
 
+  public async addUserPoint(member: Member, point: number): Promise<Member> {
+    const memberId = shapeIntoMongooseObjectId(member._id);
 
+    return await this.memberModel
+      .findOneAndUpdate(
+        {
+          _id: memberId,
+          memberType: MemberType.USER,
+          memberStatus: MemberStatus.ACTIVE,
+        },
+        { $inc: { memberPoints: point } },
+        { new: true }
+      )
+      .exec();
+  }
 
-
-  /** SPA  O'zgarish yakuni */
+  /** SSR *   O'zgarish yakuni */
 
   public async processSignup(input: MemberInput): Promise<Member> {
     // Promise faqat async da ishlatiladi

@@ -495,12 +495,25 @@ css:  snake
 // sumEvens([1, 2, 3]);
 // sumEvens([2, 4, 5, 6]);
 
- 
-// ZA -Task 
+// ZA -Task
 
-function sortByAge(arr: { age: number }[]): { age: number }[] {
-  return arr.sort((a, b) => a.age - b.age);
+// function sortByAge(arr: { age: number }[]): { age: number }[] {
+//   return arr.sort((a, b) => a.age - b.age);
+// }
+// const data = [{ age: 23 }, { age: 21 }, { age: 13 }];
+
+// console.log(sortByAge(data));
+
+// ZB - Task
+
+function randomBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-const data = [{ age: 23 }, { age: 21 }, { age: 13 }];
+// Math.random() 0 dan 1 gacha tasodifiy son beradi
+// (max - min + 1) berilgan oraliq uzunligini hisoblaydi
+// Math.floor butun songa aylantiradi
+// + min qilib natijani min va max orasiga tushiradi
+// Natija: min va max orasidan random butun son qaytadi
 
-console.log(sortByAge(data));
+// MASALAN:
+randomBetween(30, 50);
