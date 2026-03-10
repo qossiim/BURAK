@@ -506,14 +506,27 @@ css:  snake
 
 // ZB - Task
 
-function randomBetween(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-// Math.random() 0 dan 1 gacha tasodifiy son beradi
-// (max - min + 1) berilgan oraliq uzunligini hisoblaydi
-// Math.floor butun songa aylantiradi
-// + min qilib natijani min va max orasiga tushiradi
-// Natija: min va max orasidan random butun son qaytadi
+// function randomBetween(min: number, max: number): number {
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+// // Math.random() 0 dan 1 gacha tasodifiy son beradi
+// // (max - min + 1) berilgan oraliq uzunligini hisoblaydi
+// // Math.floor butun songa aylantiradi
+// // + min qilib natijani min va max orasiga tushiradi
+// // Natija: min va max orasidan random butun son qaytadi
 
-// MASALAN:
-randomBetween(30, 50);
+// // MASALAN:
+// randomBetween(30, 50);
+
+// ZC - Task
+function celsiusToFahrenheit(celsius: number): number {
+  // celsiusToFahrenheit nomli function, bitta number (celsius) qabul qiladi va number qaytaradi
+
+  const fahrenheit: number = (celsius * 9) / 5 + 32;
+  // Selsiy qiymatini Fahrenheitga aylantiradi
+  // formula: (C × 9/5) + 32
+
+  return fahrenheit;
+  // hisoblangan Fahrenheit qiymatini qaytaradi
+}
+console.log(celsiusToFahrenheit(0));
