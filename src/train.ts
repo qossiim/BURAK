@@ -518,15 +518,35 @@ css:  snake
 // // MASALAN:
 // randomBetween(30, 50);
 
-// ZC - Task
-function celsiusToFahrenheit(celsius: number): number {
-  // celsiusToFahrenheit nomli function, bitta number (celsius) qabul qiladi va number qaytaradi
+// // ZC - Task
+// function celsiusToFahrenheit(celsius: number): number {
+//   // celsiusToFahrenheit nomli function, bitta number (celsius) qabul qiladi va number qaytaradi
 
-  const fahrenheit: number = (celsius * 9) / 5 + 32;
-  // Selsiy qiymatini Fahrenheitga aylantiradi
-  // formula: (C × 9/5) + 32
+//   const fahrenheit: number = (celsius * 9) / 5 + 32;
+//   // Selsiy qiymatini Fahrenheitga aylantiradi
+//   // formula: (C × 9/5) + 32
 
-  return fahrenheit;
-  // hisoblangan Fahrenheit qiymatini qaytaradi
+//   return fahrenheit;
+//   // hisoblangan Fahrenheit qiymatini qaytaradi
+// }
+// console.log(celsiusToFahrenheit(0));
+
+
+// ZD - Task 
+
+function changeNumberInArray(index: number, arr: number[], newNumber: number): number[] {
+// function yaratildi
+// 3 ta parametr oladi:
+// index → qaysi index o‘zgartiriladi
+// arr → array
+// newNumber → yangi qo‘yiladigan son
+
+  arr[index] = newNumber;
+// array ichida berilgan index topiladi
+// va shu joydagi qiymat newNumber bilan almashtiriladi
+
+  return arr;
+// yangilangan array qaytariladi
 }
-console.log(celsiusToFahrenheit(0));
+console.log(changeNumberInArray(1, [1,3,7,2], 2));
+
