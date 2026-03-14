@@ -531,22 +531,47 @@ css:  snake
 // }
 // console.log(celsiusToFahrenheit(0));
 
+// ZD - Task
 
-// ZD - Task 
+// function changeNumberInArray(index: number, arr: number[], newNumber: number): number[] {
+// // function yaratildi
+// // 3 ta parametr oladi:
+// // index → qaysi index o‘zgartiriladi
+// // arr → array
+// // newNumber → yangi qo‘yiladigan son
 
-function changeNumberInArray(index: number, arr: number[], newNumber: number): number[] {
-// function yaratildi
-// 3 ta parametr oladi:
-// index → qaysi index o‘zgartiriladi
-// arr → array
-// newNumber → yangi qo‘yiladigan son
+//   arr[index] = newNumber;
+// // array ichida berilgan index topiladi
+// // va shu joydagi qiymat newNumber bilan almashtiriladi
 
-  arr[index] = newNumber;
-// array ichida berilgan index topiladi
-// va shu joydagi qiymat newNumber bilan almashtiriladi
+//   return arr;
+// // yangilangan array qaytariladi
+// }
+// console.log(changeNumberInArray(1, [1,3,7,2], 2));
 
-  return arr;
-// yangilangan array qaytariladi
+// ZE - Task
+
+function removeDuplicate(word: string): string {
+  // removeDuplicate nomli function ochilyapti
+  // word: string -> function bitta string parametr qabul qiladi
+  // : string -> function oxirida string qaytaradi
+
+  let result = "";
+  // result degan bo‘sh string ochilyapti
+  // takrorlanmagan harflarni shu yerga yig‘amiz
+
+  for (let i = 0; i < word.length; i++) {
+    // string ichidagi har bir harfni bitta-bitta aylanib chiqadi
+
+    if (!result.includes(word[i])) {
+      // agar result ichida hozirgi harf yo‘q bo‘lsa true bo‘ladi
+
+      result += word[i];
+      // takrorlanmagan harfni result ga qo‘shadi
+    }
+  }
+
+  return result;
 }
-console.log(changeNumberInArray(1, [1,3,7,2], 2));
 
+console.log(removeDuplicate("stringg"));
