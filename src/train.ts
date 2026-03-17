@@ -551,27 +551,56 @@ css:  snake
 
 // ZE - Task
 
-function removeDuplicate(word: string): string {
-  // removeDuplicate nomli function ochilyapti
-  // word: string -> function bitta string parametr qabul qiladi
-  // : string -> function oxirida string qaytaradi
+// function removeDuplicate(word: string): string {
+//   // removeDuplicate nomli function ochilyapti
+//   // word: string -> function bitta string parametr qabul qiladi
+//   // : string -> function oxirida string qaytaradi
 
-  let result = "";
-  // result degan bo‘sh string ochilyapti
-  // takrorlanmagan harflarni shu yerga yig‘amiz
+//   let result = "";
+//   // result degan bo‘sh string ochilyapti
+//   // takrorlanmagan harflarni shu yerga yig‘amiz
 
-  for (let i = 0; i < word.length; i++) {
-    // string ichidagi har bir harfni bitta-bitta aylanib chiqadi
+//   for (let i = 0; i < word.length; i++) {
+//     // string ichidagi har bir harfni bitta-bitta aylanib chiqadi
 
-    if (!result.includes(word[i])) {
-      // agar result ichida hozirgi harf yo‘q bo‘lsa true bo‘ladi
+//     if (!result.includes(word[i])) {
+//       // agar result ichida hozirgi harf yo‘q bo‘lsa true bo‘ladi
 
-      result += word[i];
-      // takrorlanmagan harfni result ga qo‘shadi
+//       result += word[i];
+//       // takrorlanmagan harfni result ga qo‘shadi
+//     }
+//   }
+
+//   return result;
+// }
+
+// console.log(removeDuplicate("stringg"));
+
+
+// ZF - Task
+
+function capitalizeWords(str: string): string {
+  // function capitalizeWords yaratildi, u string parametr qabul qiladi va string qaytaradi
+
+  const words = str.split(" ");
+  // stringni bo'sh joy bo'yicha so'zlarga ajratadi va array hosil qiladi
+
+  const result = words.map((word) => {
+    // har bir so'zni tekshirish uchun map ishlatilmoqda
+
+    if (word.length <= 2) {
+      // agar so'z uzunligi 1 yoki 2 ta harf bo'lsa
+
+      return word;
+      // so'zni o'zgartirmasdan qaytaradi
     }
-  }
 
-  return result;
+    return word.charAt(0).toUpperCase() + word.slice(1);
+    // so'zning birinchi harfini katta qiladi va qolgan qismini qo'shib qaytaradi
+  });
+
+  return result.join(" ");
+  // arrayni yana bo'sh joy bilan birlashtirib string qilib qaytaradi
 }
 
-console.log(removeDuplicate("stringg"));
+console.log(capitalizeWords("name should be a string"));
