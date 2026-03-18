@@ -576,31 +576,43 @@ css:  snake
 
 // console.log(removeDuplicate("stringg"));
 
-
 // ZF - Task
 
-function capitalizeWords(str: string): string {
-  // function capitalizeWords yaratildi, u string parametr qabul qiladi va string qaytaradi
+// function capitalizeWords(str: string): string {
+//   // function capitalizeWords yaratildi, u string parametr qabul qiladi va string qaytaradi
 
-  const words = str.split(" ");
-  // stringni bo'sh joy bo'yicha so'zlarga ajratadi va array hosil qiladi
+//   const words = str.split(" ");
+//   // stringni bo'sh joy bo'yicha so'zlarga ajratadi va array hosil qiladi
 
-  const result = words.map((word) => {
-    // har bir so'zni tekshirish uchun map ishlatilmoqda
+//   const result = words.map((word) => {
+//     // har bir so'zni tekshirish uchun map ishlatilmoqda
 
-    if (word.length <= 2) {
-      // agar so'z uzunligi 1 yoki 2 ta harf bo'lsa
+//     if (word.length <= 2) {
+//       // agar so'z uzunligi 1 yoki 2 ta harf bo'lsa
 
-      return word;
-      // so'zni o'zgartirmasdan qaytaradi
-    }
+//       return word;
+//       // so'zni o'zgartirmasdan qaytaradi
+//     }
 
-    return word.charAt(0).toUpperCase() + word.slice(1);
-    // so'zning birinchi harfini katta qiladi va qolgan qismini qo'shib qaytaradi
-  });
+//     return word.charAt(0).toUpperCase() + word.slice(1);
+//     // so'zning birinchi harfini katta qiladi va qolgan qismini qo'shib qaytaradi
+//   });
 
-  return result.join(" ");
-  // arrayni yana bo'sh joy bilan birlashtirib string qilib qaytaradi
+//   return result.join(" ");
+//   // arrayni yana bo'sh joy bilan birlashtirib string qilib qaytaradi
+// }
+
+// console.log(capitalizeWords("name should be a string"));
+
+// ZG - Task
+
+function toSnakeCase(str: string): string {
+  // bu function stringni snake_case ga o'tkazadi
+
+  return str.trim().toLowerCase().split(/\s+/).join("_");
+  // trim() bosh va oxirdagi bo'sh joyni olib tashlaydi
+  // toLowerCase() hamma harfni kichik qiladi
+  // split(/\s+/) 1 ta yoki ko'p bo'sh joylarni ajratadi
+  // join("_") so'zlarni pastki chiziq bilan qo'shadi
 }
-
-console.log(capitalizeWords("name should be a string"));
+console.log(toSnakeCase("name   should be   a string"));
