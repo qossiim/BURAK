@@ -606,13 +606,43 @@ css:  snake
 
 // ZG - Task
 
-function toSnakeCase(str: string): string {
-  // bu function stringni snake_case ga o'tkazadi
+// function toSnakeCase(str: string): string {
+//   // bu function stringni snake_case ga o'tkazadi
 
-  return str.trim().toLowerCase().split(/\s+/).join("_");
-  // trim() bosh va oxirdagi bo'sh joyni olib tashlaydi
-  // toLowerCase() hamma harfni kichik qiladi
-  // split(/\s+/) 1 ta yoki ko'p bo'sh joylarni ajratadi
-  // join("_") so'zlarni pastki chiziq bilan qo'shadi
+//   return str.trim().toLowerCase().split(/\s+/).join("_");
+//   // trim() bosh va oxirdagi bo'sh joyni olib tashlaydi
+//   // toLowerCase() hamma harfni kichik qiladi
+//   // split(/\s+/) 1 ta yoki ko'p bo'sh joylarni ajratadi
+//   // join("_") so'zlarni pastki chiziq bilan qo'shadi
+// }
+// console.log(toSnakeCase("name   should be   a string"));
+
+// ZH - task
+function findDisappearedNumbers(arr: number[]): number[] {
+  // function nomi findDisappearedNumbers
+  // arr degan number array qabul qiladi
+  // va natijada yo‘q raqamlarni yangi array qilib qaytaradi
+
+  const result: number[] = [];
+  // bu yerda topilgan yo‘q raqamlarni yig‘ib boramiz
+
+  const maxNum = Math.max(...arr);
+  // array ichidagi eng katta raqamni topib oladi
+  // masalan [1, 3, 4, 7] bo‘lsa maxNum = 7
+
+  for (let i = 1; i <= maxNum; i++) {
+    // 1 dan boshlab eng katta raqamgacha yurib chiqamiz
+
+    if (!arr.includes(i)) {
+      // agar i raqami array ichida bo‘lmasa
+
+      result.push(i);
+      // o‘sha yo‘q raqamni result array ichiga qo‘shamiz
+    }
+  }
+
+  return result;
+  // oxirida barcha tushib qolgan raqamlarni qaytaradi
 }
-console.log(toSnakeCase("name   should be   a string"));
+console.log(findDisappearedNumbers([1, 3, 4, 7]));
+
