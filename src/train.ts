@@ -646,24 +646,56 @@ css:  snake
 // }
 // console.log(findDisappearedNumbers([1, 3, 4, 7]));
 
-// ZI - Task 
+// ZI - Task
 
-function delayHelloWorld(message: string): Promise<string> { 
-// function nomi delayHelloWorld, string qabul qiladi va Promise<string> qaytaradi
+// function delayHelloWorld(message: string): Promise<string> {
+// // function nomi delayHelloWorld, string qabul qiladi va Promise<string> qaytaradi
 
-  return new Promise((resolve) => { 
-  // yangi Promise yaratyapmiz, resolve orqali natijani qaytaramiz
+//   return new Promise((resolve) => {
+//   // yangi Promise yaratyapmiz, resolve orqali natijani qaytaramiz
 
-    setTimeout(() => { 
-    // setTimeout 3 soniya kutadi
+//     setTimeout(() => {
+//     // setTimeout 3 soniya kutadi
 
-      resolve(message); 
-      // 3 soniyadan keyin message ni qaytaradi
+//       resolve(message);
+//       // 3 soniyadan keyin message ni qaytaradi
 
-    }, 3000); 
-    
+//     }, 3000);
 
-  });
+//   });
+// }
+
+// delayHelloWorld("Hello World").then((res) => console.log(res));
+
+// ZS - Task
+
+function reduceNestedArray(arr: (number | (number | any[])[])[]): number {
+  // arr parametri: ichida number yoki nested arraylar bo‘lishi mumkin, natija number
+
+  let sum: number = 0;
+  // jami yig‘indini saqlash uchun number tipida o‘zgaruvchi
+
+  for (const item of arr) {
+    // array ichidagi har bir elementni aylanyapti
+
+    if (Array.isArray(item)) {
+      // agar element array bo‘lsa
+
+      sum += reduceNestedArray(item);
+      // recursive chaqirib ichidagi sonlarni qo‘shadi
+    } else {
+      // agar oddiy number bo‘lsa
+
+      sum += item;
+      // sonni sum ga qo‘shadi
+    }
+    // shart tugadi
+  }
+  // loop tugadi
+
+  return sum;
+  // jami natijani qaytaradi
 }
+// function tugadi
 
-delayHelloWorld("Hello World").then((res) => console.log(res)); 
+console.log(reduceNestedArray([1, [1, 2, [4]]]));
